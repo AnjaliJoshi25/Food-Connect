@@ -24,18 +24,14 @@ trigger DropOffTrigger on Drop_Off_point__c (before insert) {
 
 }
 ```
-Functionality:
+* Functionality:
+       * Trigger Event: Before Insert - This trigger executes before new Drop_Off_point__c records are saved to the database.
 
-Trigger Event: Before Insert
-This trigger executes before new Drop_Off_point__c records are saved to the database.
-Logic:
-For each record in the Trigger.new collection (which contains the new Drop_Off_point__c records being inserted), the trigger sets the Distance__c field to the value of the distance_calculation__c field.
-Purpose:
-The primary purpose of this trigger is to ensure that the Distance__c field accurately reflects the distance calculated in the distance_calculation__c field. This alignment is necessary for utilizing the distance data in sharing rules and other processes where the distance information is critical.
-Usage:
+       * Logic: For each record in the Trigger.new collection (which contains the new Drop_Off_point__c records being inserted), the trigger sets the Distance__c field to the value of the distance_calculation__c field.
+       
+       * Purpose: The primary purpose of this trigger is to ensure that the Distance__c field accurately reflects the distance calculated in the distance_calculation__c field. This alignment is necessary for utilizing
+         the distance data in sharing rules and other processes where the distance information is critical.
 
-This trigger is particularly useful in scenarios where sharing rules or other business logic depend on distance values. By ensuring that Distance__c is populated correctly at the time of record creation, the trigger helps in maintaining data consistency and integrity.
-Notes:
+       * Usage: This trigger is particularly useful in scenarios where sharing rules or other business logic depend on distance values. By ensuring that Distance__c is populated correctly at the time of record creation,
+         the trigger helps in maintaining data consistency and integrity.
 
-Ensure that distance_calculation__c is populated with the correct value before the trigger runs, as it directly influences the Distance__c field.
-This trigger is set to run only before insertions. If updates to existing records need similar handling, additional triggers or logic would be required.
